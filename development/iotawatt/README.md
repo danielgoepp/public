@@ -3,7 +3,7 @@
 I have written these scripts to move data from IoTaWatt systems into VictoriaMetrics. I was using the IoTaWatt uploader to push my metrics to InfluxDB. However due to many reasons I decided to part ways with InfluxDB and move to VictoriaMetrics. This has issues which I would be happy to explain if you want to contact me, but for purposes of this doc I'm leaving it as "because reasons." 
 
 [vm_iotawatt_sync.py](development/iotawatt/vm_iotawatt_sync.py)\
-[vm_iotawatt_transform.py](development/iotawatt/vm_iotawatt_transform.py)\
+[vm_iotawatt_transform.py](development/iotawatt/vm_iotawatt_transform.py)
 
 # System details
 
@@ -38,4 +38,4 @@ Any questions or comments, please let me know.
 [IoTaWatt API](https://docs.iotawatt.com/en/master/query.html)\
 [VictoriaMetrics API](https://docs.victoriametrics.com/url-examples/)\
 [VM Range Query](https://docs.victoriametrics.com/keyconcepts/#range-query)\
-[VM line format](https://docs.victoriametrics.com/#json-line-format)\
+[VM line format](https://docs.victoriametrics.com/#json-line-format)
