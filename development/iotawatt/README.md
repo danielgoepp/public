@@ -35,7 +35,7 @@ A couple key items to note:
 Any questions or comments, please let me know.
 
 # Reference links
-https://docs.iotawatt.com/en/master/query.html
-https://docs.victoriametrics.com/url-examples/
-https://docs.victoriametrics.com/keyconcepts/#range-query
-https://docs.victoriametrics.com/#json-line-format
+[IoTaWatt API](https://docs.iotawatt.com/en/master/query.html)
+[VictoriaMetrics API](https://docs.victoriametrics.com/url-examples/)
+[VM Range Query](https://docs.victoriametrics.com/keyconcepts/#range-query)
+[VM line format](https://docs.victoriametrics.com/#json-line-format)
