@@ -23,7 +23,6 @@ I know, some folks just do import / export math with abs(). I just like seeing i
 A couple key items to note:
 
 - I have not written these to be flexible to all users needs, just my own. If anyone would like to share their work to make these more generic and available for anyone to configure and use to their specific setup, I would be happy to participate in something like that. I'm just providing these as is for now though. They are pretty easy to update manually to any particular setup.
-- I'm a terrible coder, very out of practice these days. Don't judge me :)
 - The source data is 5s resolution for the last year and 1m resultion for the history logs. I have consolidated and will only be looking to save 1 minute resolutioin in VM.
 - I acknowledge the benefits of using integrators to convert from Watts to Wh to get a more accurate representation of energy used vs just power. I do actually have that setup in mine, and I was collecting and storing that in InfluxDB. Since I didn't have that data going all the way back though, I decided to just load and sync the raw power data, and estimate my energy using calculations after the fact from VictoriaMetrics. Although not a perfect number, for my needs, close enough to give me an idea what's going on in my house.
 - I do a little extra tagging just to make running queries and creating visualizations in Grafana a little easier. That is not necessary of course and could be removed completely.
