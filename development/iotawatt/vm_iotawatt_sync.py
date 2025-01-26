@@ -155,7 +155,7 @@ def vm_get_iotawatt_data(host, measurement, start_time):
         else:
             show_time = datetime.fromtimestamp(query_params["begin"])
 
-        logger.info(f"Transferring {measurement} from {show_time} on {host}")
+        # logger.info(f"Transferring {measurement} from {show_time} on {host}")
 
         try:
             response = requests.get(
@@ -180,6 +180,7 @@ def vm_get_iotawatt_data(host, measurement, start_time):
 if __name__ == "__main__":
 
     while True:
+        logger.info(f"Running sync {datetime.now().isoformat('T', 'seconds')}")
         for host, measurements in measurements_all.items():
             for measurement in measurements:
                 start_time = vm_get_last_time(measurement)
@@ -194,5 +195,5 @@ if __name__ == "__main__":
                         f"No last time found for {measurement} - using {start_time}"
                     )
                     vm_get_iotawatt_data(host, measurement, start_time)
-
+        logger.info(f"Done at {datetime.now().isoformat('T', 'seconds')} - Sleep 5m")
         time.sleep(300)
