@@ -1,9 +1,8 @@
-#!/usr/bin/python3
-
-from datetime import datetime, timedelta
+from datetime import datetime
 import requests
 import json
 import logging
+import time
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -180,17 +179,20 @@ def vm_get_iotawatt_data(host, measurement, start_time):
 
 if __name__ == "__main__":
 
-    for host, measurements in measurements_all.items():
-        for measurement in measurements:
-            start_time = vm_get_last_time(measurement)
-            if start_time is not None:
-                vm_get_iotawatt_data(host, measurement, start_time + 5)
-            else:
-                if host == "iwatt6":
-                    start_time = "2023-02-05"
-                elif host == "iwatt5":
-                    start_time = "2021-09-18"
-                logger.warning(
-                    f"No last time found for {measurement} - using {start_time}"
-                )
-                vm_get_iotawatt_data(host, measurement, start_time)
+    while True:
+        for host, measurements in measurements_all.items():
+            for measurement in measurements:
+                start_time = vm_get_last_time(measurement)
+                if start_time is not None:
+                    vm_get_iotawatt_data(host, measurement, start_time + 5)
+                else:
+                    if host == "iwatt6":
+                        start_time = "2023-02-05"
+                    elif host == "iwatt5":
+                        start_time = "2021-09-18"
+                    logger.warning(
+                        f"No last time found for {measurement} - using {start_time}"
+                    )
+                    vm_get_iotawatt_data(host, measurement, start_time)
+
+        time.sleep(300)
