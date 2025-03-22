@@ -60,7 +60,7 @@ def get_time_chunks(start_time, end_time, chunk_size_days):
 
 if __name__ == "__main__":
 
-    vm_url = f"https://vmsingle-lt-prod.goepp.net/"
+    vm_url = f"https://vms-prod-lt.goepp.net/"
     end_time = "2025-01-31T23:59:59+00:00"
     source_step = "1m"
     target_step = "1m"

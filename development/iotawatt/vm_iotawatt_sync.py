@@ -7,7 +7,7 @@ import time
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-victoriametrics_server = "https://vmsingle-lt-prod.goepp.net"
+victoriametrics_server = "https://vms-prod-lt.goepp.net"
 measurements_all = {
     "iwatt5": [
         "Mains_1",
