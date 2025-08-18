@@ -1,0 +1,41 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: backup-cpu-alert-silence
+  namespace: management
+  labels:
+    app: backup-cpu-alert
+    component: cronjob
+spec:
+  # Run at 4:00 AM every day
+  schedule: "0 4 * * *"
+  timeZone: "America/New_York"  # Adjust to your timezone
+  concurrencyPolicy: Forbid    # Don't allow overlapping runs
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: backup-cpu-alert
+            component: job
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: backup-cpu-alert
+            image: danielgoepp/backup-cpu-alert:latest
+            imagePullPolicy: IfNotPresent
+            command: ["python3", "backup_cpu_alert_silence.py", "15"]
+            resources:
+              requests:
+                memory: "64Mi"
+                cpu: "50m"
+              limits:
+                memory: "128Mi"
+                cpu: "100m"
+            env:
+            - name: TZ
+              value: "America/New_York"  # Adjust to your timezone
+          # Use a specific service account if needed for RBAC
+          # serviceAccountName: backup-cpu-alert-sa
